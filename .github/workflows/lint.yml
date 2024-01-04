@@ -23,8 +23,8 @@ jobs:
 
       - name: Run rubocop
         run: |
-          rake lint:rubocop
+         bundle exec rake lint:rubocop
 
       - name: Run slim-lint
         run: |
-          rake lint:slim
+         bundle exec rake lint:slim
