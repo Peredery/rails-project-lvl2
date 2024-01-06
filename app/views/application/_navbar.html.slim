@@ -1,0 +1,18 @@
+nav.navbar.navbar-expand-md.navbar-white.fixed-top.bg-white.border-bottom
+  .container-fluid
+    .navbar-expand-md
+      = link_to "Home", root_path, class: "navbar-brand link-dark"
+    ul.nav.nav-pills
+      - if user_signed_in?
+        li.nav-item.me-2.nav-link.disabled
+            = current_user.email
+      li.nav-item.me-2
+        - if user_signed_in?
+          = link_to "Profile", edit_user_registration_path, class: "nav-link link-dark"
+        -else
+          = link_to "Login", new_user_session_path, class: "nav-link link-dark"
+      li.nav-item.me-2
+        - if user_signed_in?
+          = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link link-dark"
+        - else
+          = link_to "Sign up", new_user_registration_path, class: "nav-link link-dark"

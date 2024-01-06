@@ -64,6 +64,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "rails_live_reload"
   gem "web-console"
   gem "ruby-lsp-rails"
 
@@ -80,4 +81,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "devise", "~> 4.9"
+gem "devise"
+gem "devise-i18n"
+gem 'devise-bootstrap-views'
+
+gem "slim-rails"
