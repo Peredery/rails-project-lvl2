@@ -77,6 +77,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -109,15 +112,11 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-bootstrap-views (1.1.0)
-    devise-i18n (1.12.0)
-      devise (>= 4.9.0)
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
     faker (3.2.2)
       i18n (>= 1.8.11, < 2)
-    ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -135,9 +134,6 @@ GEM
       activesupport (>= 5.0.0)
     json (2.7.1)
     language_server-protocol (3.17.0.3)
-    listen (3.8.0)
-      rb-fsevent (~> 0.10, >= 0.10.3)
-      rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -212,11 +208,6 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails_live_reload (0.3.5)
-      listen
-      nio4r
-      railties
-      websocket-driver
     railties (7.1.2)
       actionpack (= 7.1.2)
       activesupport (= 7.1.2)
@@ -227,9 +218,6 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.1.0)
-    rb-fsevent (0.11.2)
-    rb-inotify (0.10.1)
-      ffi (~> 1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
     regexp_parser (2.8.3)
@@ -290,6 +278,9 @@ GEM
       sentry-ruby (~> 5.15.2)
     sentry-ruby (5.15.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
+    simple_form (5.2.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     slim (5.2.0)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -345,13 +336,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   bootsnap
   capybara
   cssbundling-rails
   debug
   devise
-  devise-bootstrap-views
-  devise-i18n
   faker
   importmap-rails
   jbuilder
@@ -359,12 +349,12 @@ DEPENDENCIES
   pg
   puma (>= 5.0)
   rails (~> 7.1.2)
-  rails_live_reload
   rubocop-rails-omakase
   ruby-lsp-rails
   selenium-webdriver
   sentry-rails
   sentry-ruby
+  simple_form
   slim-rails
   slim_lint
   sprockets-rails

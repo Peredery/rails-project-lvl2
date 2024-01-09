@@ -1,18 +1,20 @@
-nav.navbar.navbar-expand-md.navbar-white.fixed-top.bg-white.border-bottom
+nav.navbar.navbar-default.navbar-fixed-top.bg-white.border-bottom
   .container-fluid
     .navbar-expand-md
       = link_to "Home", root_path, class: "navbar-brand link-dark"
     ul.nav.nav-pills
+      li.nav-item.me-2
+        = link_to new_post_url, class: "btn btn-primary" do
+          i.bi.bi-plus.m-1
+          | Create post
       - if user_signed_in?
         li.nav-item.me-2.nav-link.disabled
-            = current_user.email
+          i.bi.bi-person.m-1
+          = current_user.email
       li.nav-item.me-2
         - if user_signed_in?
-          = link_to "Profile", edit_user_registration_path, class: "nav-link link-dark"
-        -else
-          = link_to "Login", new_user_session_path, class: "nav-link link-dark"
-      li.nav-item.me-2
-        - if user_signed_in?
-          = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link link-dark"
+          = button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link link-dark text-pink-hover"
         - else
-          = link_to "Sign up", new_user_registration_path, class: "nav-link link-dark"
+          = link_to "Login", new_user_session_path, class: "nav-link link-dark text-pink-hover"
+          li.nav-item.me-2
+            = link_to "Sign up", new_user_registration_path, class: "nav-link link-dark"

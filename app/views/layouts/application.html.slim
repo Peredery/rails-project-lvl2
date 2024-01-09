@@ -9,9 +9,14 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-  = render partial: "navbar"
-
-  body
-    p.notice #{notice}
-    p.alert #{alert}
-    = yield
+  body.bg-light
+    = render "navbar"
+    .container-fluid.my-4
+      = render partial: "flash"
+      .row
+        .col-2.sticky-top.h-100.my-2
+          = render partial: "sidebar"
+        .col-8
+          = yield
+        .col-2
+          = render partial: "advert"
