@@ -56,6 +56,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri windows]
   gem "minitest-power_assert"
   gem "sqlite3"
+  gem "slim_lint"
   gem "rubocop-rails-omakase"
   gem "annotate"
   gem "faker"
