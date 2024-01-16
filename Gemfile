@@ -78,3 +78,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "dartsass-rails", "~> 0.5.0"
+gem "bootstrap", github: "twbs/bootstrap-rubygem"
