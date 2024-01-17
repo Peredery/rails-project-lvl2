@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post, notice: "Post updated successfully"
     else
-      render :edit, notice: "Post could not be updated"
+      render :edit, notice: "Post could not be updated", status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: "Post created successfully"
     else
-      render :new, notice: "Post could not be created"
+      render :new, notice: "Post could not be created", status: :unprocessable_entity
     end
   end
 
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to root_path, notice: "Post deleted successfully"
     else
-      redirect_to root_path, notice: "Post could not be deleted"
+      redirect_to root_path, notice: "Post could not be deleted", status: :unprocessable_entity
     end
   end
 
