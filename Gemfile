@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 
 gem "simple_form"
 gem "devise"
+gem "devise-bootstrap-views", "~> 1.0"
+
 
 group :production do
   gem "pg"
