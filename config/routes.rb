@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "home#index"
 
-  resources :posts, only: %i[show new create edit update destroy]
+  resources :posts do
+    scope module: :posts do
+      resources :comments, expect: [ :index, :show, :new ]
+    end
+  end
 end

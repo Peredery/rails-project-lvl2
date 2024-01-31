@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: post_comments
+#
+#  id         :integer          not null, primary key
+#  ancestry   :string
+#  content    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  post_id    :integer          not null
+#  user_id    :integer          not null
+#
+# Indexes
+#
+#  index_post_comments_on_ancestry  (ancestry)
+#  index_post_comments_on_post_id   (post_id)
+#  index_post_comments_on_user_id   (user_id)
+#
+# Foreign Keys
+#
+#  post_id  (post_id => posts.id)
+#  user_id  (user_id => users.id)
+#
+
+with_comments:
+  content: this is comment with comments
+  user: one
+  post: one
+  ancestry: "/"
+
+nested:
+  content: commented comment
+  user: one
+  post: one
+  ancestry: <%= ActiveRecord::FixtureSet.identify(:with_comments) %>
+
+deep_nested:
+  content: deep comment
+  user: one
+  post: one
+  ancestry: <%= [ActiveRecord::FixtureSet.identify(:with_comments), ActiveRecord::FixtureSet.identify(:nested)].join('/') %>

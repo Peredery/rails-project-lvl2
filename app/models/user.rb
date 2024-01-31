@@ -23,4 +23,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy, foreign_key: "creator_id", inverse_of: :creator
+  has_many :comments, dependent: :destroy, class_name: "PostComment", inverse_of: :user
 end

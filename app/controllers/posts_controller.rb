@@ -16,6 +16,8 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
 
+    not_found unless @post
+
     if @post.update(post_params)
       redirect_to @post, notice: "Post updated successfully"
     else
