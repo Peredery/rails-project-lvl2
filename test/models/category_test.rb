@@ -10,7 +10,11 @@
 require "test_helper"
 
 class CategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def test_soft_delete_comment
+    comment = post_comments(:with_comments)
+    assert_not comment.deleted?
+
+    comment.soft_delete!(users(:one).id)
+    assert comment.deleted?
+  end
 end

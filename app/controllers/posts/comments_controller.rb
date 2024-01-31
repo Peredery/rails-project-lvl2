@@ -30,7 +30,7 @@ class Posts::CommentsController < ApplicationController
   def destroy
     @comment = current_user.comments.find(params[:id])
 
-    if @comment.update(content: "comment deleted")
+    if @comment.soft_delete!(current_user.id)
       redirect_to @comment.post, notice: "Comment deleted successfully"
     else
       redirect_to @comment.post, notice: "Comment could not be deleted", status: :unprocessable_entity

@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_19_140928) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_31_162105) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "deleted_entities", force: :cascade do |t|
+    t.integer "deleted_by"
+    t.string "deleted_entity_type", null: false
+    t.integer "deleted_entity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_entity_type", "deleted_entity_id"], name: "index_deleted_entities_on_deleted_entity"
   end
 
   create_table "post_comments", force: :cascade do |t|

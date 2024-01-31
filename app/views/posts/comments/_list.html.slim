@@ -6,7 +6,11 @@
           .row
             .col-12
               h5.card-title = comment.user.email
-              p.card-text = comment.content
+              - if comment.deleted?
+                p.card-text.text-muted.text-decoration-line-through
+                  | comment deleted
+              - else
+                p.card-text = comment.content
               p.card-text
                 small.text-muted
                   = time_ago_in_words(comment.created_at)

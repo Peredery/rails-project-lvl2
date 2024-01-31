@@ -22,6 +22,8 @@
 #  user_id  (user_id => users.id)
 #
 class PostComment < ApplicationRecord
+  include Deletable
+
   belongs_to :post, inverse_of: :comments
   belongs_to :user, inverse_of: :comments
 
