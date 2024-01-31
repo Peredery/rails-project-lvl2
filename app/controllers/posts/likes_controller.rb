@@ -8,8 +8,10 @@ class Posts::LikesController < ApplicationController
     respond_to do |format|
       if @like.save
         format.turbo_stream { render turbo_stream: turbo_stream.replace("like_button", partial: "posts/likes", locals: { post: @post }) }
+        format.html { redirect_to @post, notice: "You liked this post." }
       else
         format.turbo_stream { render turbo_stream: turbo_stream.replace("like_button", partial: "posts/likes", locals: { post: @post }) }
+        format.html { redirect_to @post, alert: "You already liked this post." }
       end
     end
   end
