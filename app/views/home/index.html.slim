@@ -9,8 +9,8 @@ h1
           h5.card-title
             = link_to post.title,
               post_path(post),
-              class: "text-dark text-decoration-none"
-          = render "posts/likes", post: post
+              class: 'text-dark text-decoration-none'
+          = render 'posts/likes', post: post
           p.card_text
             = truncate(post.body, length: 100)
           p.card-text
@@ -21,4 +21,4 @@ h1
             small.text-muted
               |> Created at:
               = post.created_at
-          = link_to t(".read_more"), post_path(post), class: "btn btn-primary"
+          = link_to t('.read_more'), post_path(post), class: 'btn btn-primary'

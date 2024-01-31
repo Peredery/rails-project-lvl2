@@ -16,11 +16,11 @@
                   = time_ago_in_words(comment.created_at)
                   |< ago
               - if owner?(comment)
-                = link_to "Edit", edit_post_comment_path(@post, comment), class: "btn btn-primary mb-2"
-                = button_to "Delete", post_comment_path(@post, comment),
-                  method: :delete, data: { turbo_confirm: "Are you sure?" },
-                  class: "btn btn-danger mb-2"
+                = link_to 'Edit', edit_post_comment_path(@post, comment), class: 'btn btn-primary mb-2'
+                = button_to 'Delete', post_comment_path(@post, comment),
+                  method: :delete, data: { turbo_confirm: 'Are you sure?' },
+                  class: 'btn btn-danger mb-2'
             .col-12
-              = render "posts/comments/form", comment: @post.comments.build, url: post_comments_path(@post), parent_id: comment.id
+              = render 'posts/comments/form', comment: @post.comments.build, url: post_comments_path(@post), parent_id: comment.id
             .col-12
-              = render "posts/comments/list", comments: sub_comments
+              = render 'posts/comments/list', comments: sub_comments

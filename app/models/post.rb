@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: posts
@@ -21,17 +23,15 @@
 #  creator_id   (creator_id => users.id)
 #
 class Post < ApplicationRecord
-  belongs_to :creator, class_name: "User", inverse_of: :posts
+  belongs_to :creator, class_name: 'User', inverse_of: :posts
   belongs_to :category
-  has_many :comments, class_name: "PostComment", inverse_of: :post, dependent: :destroy
-  has_many :likes, class_name: "PostLike", inverse_of: :post, dependent: :destroy
+  has_many :comments, class_name: 'PostComment', inverse_of: :post, dependent: :destroy
+  has_many :likes, class_name: 'PostLike', inverse_of: :post, dependent: :destroy
 
   validates :title,
             :body,
-            :creator,
-            :category,
             presence: true
 
-  validates_length_of :body, in: 200..4000, allow_blank: true
-  validates_length_of :title, in: 5..255, allow_blank: true
+  validates :body, length: { in: 200..4000, allow_blank: true }
+  validates :title, length: { in: 5..255, allow_blank: true }
 end

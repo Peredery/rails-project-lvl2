@@ -2,21 +2,21 @@ doctype html
 html
   head
     title RailsProjectLvl2
-    meta name="viewport" content="width=device-width,initial-scale=1"
+    meta name='viewport' content='width=device-width,initial-scale=1'
     = csrf_meta_tags
     = csp_meta_tag
 
-    = stylesheet_link_tag "application", "data-turbo-track" => "reload"
-    = javascript_include_tag "application", "data-turbo-track" => "reload", type: "module"
+    = stylesheet_link_tag 'application', 'data-turbo-track' => 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track' => 'reload', type: 'module'
 
   body.bg-light
-    = render "navbar"
+    = render 'navbar'
     .container-fluid.my-4
-      = render partial: "flash"
+      = render partial: 'flash'
       .row
         .col-2.sticky-top.h-100.my-2
-          = render partial: "sidebar"
+          = render partial: 'sidebar'
         .col-8
           = yield
         .col-2
-          = render partial: "advert"
+          = render partial: 'advert'

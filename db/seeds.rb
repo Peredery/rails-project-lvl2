@@ -11,5 +11,5 @@
 #   end
 
 %w[ruby rails linux].each do |name|
-  Category.create(name: name)
+  Category.create(name:)
 end

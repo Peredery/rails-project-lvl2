@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 namespace :lint do
-  desc "Run slim lint"
+  desc 'Run slim lint'
   task slim: :environment do
-    sh "bundle exec slim-lint app/views"
+    sh 'bundle exec slim-lint app/views'
   end
 
-  desc "Run rubocop"
+  desc 'Run rubocop'
   task rubocop: :environment do
-    sh "./bin/rubocop"
+    sh './bin/rubocop'
   end
 
-  desc "Run all"
+  desc 'Run all'
   task all: %i[slim rubocop]
 end

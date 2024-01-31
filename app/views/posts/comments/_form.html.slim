@@ -4,8 +4,8 @@
       = f.hidden_field :parent_id, value: parent_id
     = f.error_notification
     = f.input :content, label: false
-    = f.submit class: "btn btn-primary mb-4"
+    = f.submit class: 'btn btn-primary mb-4'
 - else
   |> You need
-  = link_to "login", new_user_session_path
+  = link_to 'login', new_user_session_path
   |< to comment

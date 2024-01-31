@@ -1,29 +1,31 @@
+# frozen_string_literal: true
+
 class Posts::CommentsController < ApplicationController
   before_action :authenticate_user!
-
-  def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(user_id: current_user.id, **comment_params)
-
-    if @comment.save
-      redirect_to @post, notice: "Comment created successfully"
-    else
-      redirect_to @post, notice: "Comment could not be created", status: :unprocessable_entity
-    end
-  end
 
   def edit
     @comment = current_user.comments.find(params[:id])
     @post = Post.find_by_id(id: params[:post_id])
   end
 
+  def create
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(user_id: current_user.id, **comment_params)
+
+    if @comment.save
+      redirect_to @post, notice: 'Comment created successfully'
+    else
+      redirect_to @post, notice: 'Comment could not be created', status: :unprocessable_entity
+    end
+  end
+
   def update
     @comment = current_user.comments.find(params[:id])
 
     if @comment.update(comment_params)
-      redirect_to @comment.post, notice: "Comment updated successfully"
+      redirect_to @comment.post, notice: 'Comment updated successfully'
     else
-      render :edit, notice: "Comment could not be updated", status: :unprocessable_entity
+      render :edit, notice: 'Comment could not be updated', status: :unprocessable_entity
     end
   end
 
@@ -31,9 +33,9 @@ class Posts::CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
 
     if @comment.soft_delete!(current_user.id)
-      redirect_to @comment.post, notice: "Comment deleted successfully"
+      redirect_to @comment.post, notice: 'Comment deleted successfully'
     else
-      redirect_to @comment.post, notice: "Comment could not be deleted", status: :unprocessable_entity
+      redirect_to @comment.post, notice: 'Comment could not be deleted', status: :unprocessable_entity
     end
   end
 

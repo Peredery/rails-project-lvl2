@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: deleted_entities
@@ -15,5 +17,5 @@
 #
 class DeletedEntity < ApplicationRecord
   belongs_to :deleted_entity, polymorphic: true
-  belongs_to :user, foreign_key: :deleted_by
+  belongs_to :user, foreign_key: :deleted_by, inverse_of: :deleted_entities
 end

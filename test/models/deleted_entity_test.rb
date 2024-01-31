@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: deleted_entities
@@ -13,7 +15,7 @@
 #
 #  index_deleted_entities_on_deleted_entity  (deleted_entity_type,deleted_entity_id)
 #
-require "test_helper"
+require 'test_helper'
 
 class DeletedEntityTest < ActiveSupport::TestCase
 end

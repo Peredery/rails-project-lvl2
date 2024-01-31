@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   def test_update
@@ -30,6 +32,6 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   def test_delete
     sign_in users(:one)
     delete post_comment_path(posts(:one), post_comments(:with_comments))
-    assert_redirected_to post_path(posts(:one)), "Comment deleted successfully"
+    assert_redirected_to post_path(posts(:one)), 'Comment deleted successfully'
   end
 end

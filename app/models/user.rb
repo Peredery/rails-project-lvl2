@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -22,7 +24,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :posts, dependent: :destroy, foreign_key: "creator_id", inverse_of: :creator
-  has_many :comments, dependent: :destroy, class_name: "PostComment", inverse_of: :user
-  has_many :likes, dependent: :destroy, class_name: "PostLike", inverse_of: :user
+  has_many :posts, dependent: :destroy, foreign_key: 'creator_id', inverse_of: :creator
+  has_many :comments, dependent: :destroy, class_name: 'PostComment', inverse_of: :user
+  has_many :likes, dependent: :destroy, class_name: 'PostLike', inverse_of: :user
+  has_many :deleted_entities, as: :deleted_entity, dependent: :destroy
 end
