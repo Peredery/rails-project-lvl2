@@ -1,2 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+.btn-primary.bi-heart:hover {
+  color: red;
+}
+
+.btn-primary.bi-heart-fill:hover {
+  color: gray;
+}

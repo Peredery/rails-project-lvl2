@@ -5,13 +5,18 @@ article.col-12.text-break
     = @post.category.name
 
   p = @post.created_at
+  = render "posts/likes", post: @post
   p = simple_format(@post.body)
-  - if owner?(@post)
-    p
-    = link_to "Edit", edit_post_path(@post), class: "btn btn-primary mb-2"
-    = button_to "Delete", post_path(@post),
-      method: :delete, data: { turbo_confirm: "Are you sure?" },
-      class: "btn btn-danger mb-2"
+  ul.nav.nav-pills
+    li.nav-item.me-2
+      = link_to "Back", url_for(:back), class: "btn btn-secondary mb-2"
+    - if owner?(@post)
+      li.nav-item.me-2
+        = link_to "Edit", edit_post_path(@post), class: "btn btn-primary mb-2"
+      li.nav-item.me-2
+        = button_to "Delete", post_path(@post),
+          method: :delete, data: { turbo_confirm: "Are you sure?" },
+          class: "btn btn-danger mb-2"
 
   h2 Comments
   = render "posts/comments/form", comment: @post.comments.build, url: post_comments_path(@post)

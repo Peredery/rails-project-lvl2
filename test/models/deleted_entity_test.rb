@@ -16,5 +16,4 @@
 require "test_helper"
 
 class DeletedEntityTest < ActiveSupport::TestCase
-
 end

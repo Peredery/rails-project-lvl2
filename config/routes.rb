@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     scope module: :posts do
+      resources :likes, expect: [ :index, :show, :new ]
       resources :comments, expect: [ :index, :show, :new ]
     end
   end

@@ -10,7 +10,8 @@ h1
             = link_to post.title,
               post_path(post),
               class: "text-dark text-decoration-none"
-          p.card-text
+          = render "posts/likes", post: post
+          p.card_text
             = truncate(post.body, length: 100)
           p.card-text
             small.text-muted
