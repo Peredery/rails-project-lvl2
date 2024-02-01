@@ -1,5 +1,5 @@
 - if user_signed_in?
-  = simple_form_for comment, url: url do |f|
+  = simple_form_for comment, url: do |f|
     - if defined?(parent_id)
       = f.hidden_field :parent_id, value: parent_id
     = f.error_notification
