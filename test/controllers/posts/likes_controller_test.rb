@@ -3,20 +3,20 @@
 require 'test_helper'
 
 class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
-  def setup
+  setup do
     @post = posts(:one)
     @user = users(:one)
 
     sign_in @user
   end
 
-  def test_create
-    post post_likes_url(@post), as: :turbo_stream, xhr: true
+  test 'create' do
+    post post_likes_url(@post), as: :html
 
-    assert_response :success
+    assert_redirected_to @post
   end
 
-  def test_destroy
+  test 'destroy' do
     assert_difference -> { PostLike.count }, -1 do
       delete post_like_url(@post, @post.likes.first), as: :turbo_stream, xhr: true
     end

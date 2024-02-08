@@ -28,4 +28,5 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy, class_name: 'PostComment', inverse_of: :user
   has_many :likes, dependent: :destroy, class_name: 'PostLike', inverse_of: :user
   has_many :deleted_entities, as: :deleted_entity, dependent: :destroy
+  has_many :deleted_by, class_name: 'DeletedEntity', foreign_key: :deleted_by, inverse_of: :user, dependent: :destroy
 end

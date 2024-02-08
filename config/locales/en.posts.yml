@@ -1,0 +1,34 @@
+en:
+  posts:
+    title: "Posts"
+    new:
+      title: "New Post"
+    create:
+      success: "Post was successfully created."
+      failure: "Post was not created."
+    update:
+        success: "Post was successfully updated."
+        failure: "Post was not updated."
+    destroy:
+        success: "Post was successfully destroyed."
+        failure: "Post was not destroyed."
+    comments:
+        title: "Comments"
+        reply: "Reply"
+        login_notice: "You need to sign in or sign up before continuing."
+        create:
+            success: "Comment was successfully created."
+            failure: "Comment was not created."
+        update:
+            success: "Comment was successfully updated."
+            failure: "Comment was not updated."
+        destroy:
+            success: "Comment was successfully destroyed."
+            failure: "Comment was not destroyed."
+    likes:
+        create:
+            success: "Like was successfully created."
+            failure: "Like was not created."
+        destroy:
+            success: "Like was successfully destroyed."
+            failure: "Like was not destroyed."

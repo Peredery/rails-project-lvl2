@@ -1,5 +1,9 @@
 .mt-6.mb-2
   - if flash.any?
-    - flash.each_value do |message|
-      .alert.alert-info role='alert'
-        = message
+    - flash.each do |type, message|
+      - if type == 'error'
+        .alert.alert-danger role='alert'
+          = message
+      - else
+        .alert.alert-info role='alert'
+          = message

@@ -1,6 +1,6 @@
 = simple_form_for post do |f|
   = f.error_notification
-  = f.input :title, hint: 'Minimum text size should be 5 and maximum 255'
+  = f.input :title, hint: t('simple_form.posts.hints.title')
   = f.association :category
-  = f.input :body, as: :text, input_html: { cols: 40, rows: 10 }, hint: 'Minimum text size should be 200 and maximum 4000'
+  = f.input :body, as: :text, input_html: { cols: 40, rows: 10 }, hint: t('simple_form.posts.hints.body')
   = f.button :submit, class: 'btn btn-primary'

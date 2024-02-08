@@ -28,4 +28,21 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  back: "Back"
+  edit: "Edit"
+  delete: "Delete"
+  new: "New"
+  save: "Save"
+  submit: "Submit"
+  confirm_prompt: "Are you sure?"
+  created_at: "Created At "
+  new_post: "New Post"
+  sign_in: "Sign In"
+  log_out: "Log Out"
+  sign_up: "Sign Up"
+  contact_us: "Contact Us"
+  read_more: "Read More"
+  deleted: "This content has been deleted."
+
+  advert:
+    promote: 'You can promote your post by clicking the button below.'

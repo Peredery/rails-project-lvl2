@@ -17,5 +17,5 @@
 #
 class DeletedEntity < ApplicationRecord
   belongs_to :deleted_entity, polymorphic: true
-  belongs_to :user, foreign_key: :deleted_by, inverse_of: :deleted_entities
+  belongs_to :user, foreign_key: :deleted_by, inverse_of: :deleted_by
 end

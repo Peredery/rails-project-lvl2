@@ -1,5 +1,4 @@
-h1
-  | Posts
+h1 = t('.title')
 
 .row
   .col-12
@@ -15,10 +14,10 @@ h1
             = truncate(post.body, length: 100)
           p.card-text
             small.text-muted
-              |> Category:
+              => t('.category')
               = post.category.name
           p.card-text
             small.text-muted
-              |> Created at:
+              => t('.created_at')
               = post.created_at
-          = link_to t('.read_more'), post_path(post), class: 'btn btn-primary'
+          = link_to t('read_more'), post_path(post), class: 'btn btn-primary'

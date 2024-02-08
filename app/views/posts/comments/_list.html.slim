@@ -8,17 +8,16 @@
               h5.card-title = comment.user.email
               - if comment.deleted?
                 p.card-text.text-muted.text-decoration-line-through
-                  | comment deleted
+                  = t('deleted')
               - else
                 p.card-text = comment.content
               p.card-text
                 small.text-muted
                   = time_ago_in_words(comment.created_at)
-                  |< ago
               - if owner?(comment)
-                = link_to 'Edit', edit_post_comment_path(@post, comment), class: 'btn btn-primary mb-2'
-                = button_to 'Delete', post_comment_path(@post, comment),
-                  method: :delete, data: { turbo_confirm: 'Are you sure?' },
+                = link_to t('edit'), edit_post_comment_path(@post, comment), class: 'btn btn-primary mb-2'
+                = button_to t('delete'), post_comment_path(@post, comment),
+                  method: :delete, data: { turbo_confirm: t('confirm_prompt') },
                   class: 'btn btn-danger mb-2'
             .col-12
               = render 'posts/comments/form', comment: @post.comments.build, url: post_comments_path(@post), parent_id: comment.id

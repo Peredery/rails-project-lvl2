@@ -1,7 +1,7 @@
 article.col-12.text-break
   h1 = @post.title
   small
-    |> Category:
+    = t('.categories')
     = @post.category.name
 
   p = @post.created_at
@@ -9,13 +9,13 @@ article.col-12.text-break
   p = simple_format(@post.body)
   ul.nav.nav-pills
     li.nav-item.me-2
-      = link_to 'Back', url_for(:back), class: 'btn btn-secondary mb-2'
+      = link_to t('back'), url_for(:back), class: 'btn btn-secondary mb-2'
     - if owner?(@post)
       li.nav-item.me-2
-        = link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary mb-2'
+        = link_to t('edit'), edit_post_path(@post), class: 'btn btn-primary mb-2'
       li.nav-item.me-2
-        = button_to 'Delete', post_path(@post),
-          method: :delete, data: { turbo_confirm: 'Are you sure?' },
+        = button_to t('delete'), post_path(@post),
+          method: :delete, data: { turbo_confirm: t('confirm_prompt') },
           class: 'btn btn-danger mb-2'
 
   h2 Comments

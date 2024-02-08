@@ -18,9 +18,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to @post, notice: 'Post created successfully'
+      redirect_to @post, notice: t('.success')
     else
-      render :new, notice: 'Post could not be created', status: :unprocessable_entity
+      render :new, notice: t('.failure'), status: :unprocessable_entity
     end
   end
 
@@ -30,18 +30,18 @@ class PostsController < ApplicationController
     not_found unless @post
 
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post updated successfully'
+      redirect_to @post, notice: t('.success')
     else
-      render :edit, notice: 'Post could not be updated', status: :unprocessable_entity
+      render :edit, notice: t('.failure'), status: :unprocessable_entity
     end
   end
 
   def destroy
     @post = current_user.posts.find(params[:id])
     if @post.destroy
-      redirect_to root_path, notice: 'Post deleted successfully'
+      redirect_to root_path, notice: t('.success')
     else
-      redirect_to root_path, notice: 'Post could not be deleted', status: :unprocessable_entity
+      redirect_to root_path, notice: t('.failure'), status: :unprocessable_entity
     end
   end
 

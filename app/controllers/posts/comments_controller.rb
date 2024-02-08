@@ -13,9 +13,9 @@ class Posts::CommentsController < ApplicationController
     @comment = @post.comments.build(user_id: current_user.id, **comment_params)
 
     if @comment.save
-      redirect_to @post, notice: 'Comment created successfully'
+      redirect_to @post, notice: t('.success')
     else
-      redirect_to @post, notice: 'Comment could not be created', status: :unprocessable_entity
+      redirect_to @post, notice: t('.failure'), status: :unprocessable_entity
     end
   end
 
@@ -23,9 +23,9 @@ class Posts::CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
 
     if @comment.update(comment_params)
-      redirect_to @comment.post, notice: 'Comment updated successfully'
+      redirect_to @comment.post, notice: t('.success')
     else
-      render :edit, notice: 'Comment could not be updated', status: :unprocessable_entity
+      render :edit, notice: t('.failure'), status: :unprocessable_entity
     end
   end
 
@@ -33,9 +33,9 @@ class Posts::CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
 
     if @comment.soft_delete!(current_user.id)
-      redirect_to @comment.post, notice: 'Comment deleted successfully'
+      redirect_to @comment.post, notice: t('.success')
     else
-      redirect_to @comment.post, notice: 'Comment could not be deleted', status: :unprocessable_entity
+      redirect_to @comment.post, notice: t('.failure'), status: :unprocessable_entity
     end
   end
 
