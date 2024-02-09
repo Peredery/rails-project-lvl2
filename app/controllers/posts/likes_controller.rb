@@ -23,7 +23,7 @@ class Posts::LikesController < ApplicationController
 
     respond_to do |format|
       if @like&.destroy
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('like_button', partial: 'posts/likes', locals: { post: @post }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("like_button_post_id#{@post.id}", partial: 'posts/likes', locals: { post: @post }) }
         format.html { redirect_to @post, notice: t('.success') }
       else
         format.html { redirect_to @post, alert: t('.failure') }
