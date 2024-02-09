@@ -5,7 +5,6 @@ class Posts::CommentsController < ApplicationController
   before_action :comment, only: %i[edit update destroy]
 
   def edit
-    @comment = current_user.comments.find(params[:id])
     @post = Post.find_by_id(id: params[:post_id])
   end
 
@@ -21,6 +20,8 @@ class Posts::CommentsController < ApplicationController
   end
 
   def update
+    @comment = current_user.comments.find(params[:id])
+
     if @comment.update(comment_params)
       redirect_to @comment.post, notice: t('.success')
     else
@@ -39,7 +40,7 @@ class Posts::CommentsController < ApplicationController
   private
 
   def comment
-    @comment ||= current_user.comments.find_by(params[:id], deleted: false)
+    @comment = current_user.comments.find_by(params[:id], deleted: false)
   end
 
   def comment_params
