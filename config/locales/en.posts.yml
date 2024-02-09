@@ -17,7 +17,8 @@ en:
         failure: "Post was not destroyed."
     comments:
         title: "Comments"
-        reply: "Reply"
+        list:
+          reply: "Reply"
         form:
           login_notice: "You need to sign in or sign up before comment."
         create:
