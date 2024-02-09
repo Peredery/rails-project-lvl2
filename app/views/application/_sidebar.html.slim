@@ -1,5 +1,5 @@
 ul.navbar.justify-content-center
   p.text-muted
-    = t('.categories')
+    => t('.categories')
   - categories.each do |category|
     = link_to category.name, '#', method: :get, class: 'btn m-2 w-100'

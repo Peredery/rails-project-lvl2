@@ -4,3 +4,6 @@
   = f.association :category
   = f.input :body, as: :text, input_html: { cols: 40, rows: 10 }, hint: t('simple_form.posts.hints.body')
   = f.button :submit, class: 'btn btn-primary'
+
+.mt-2
+  = link_to t('back'), url_for(:back), class: 'btn btn-secondary mb-2'

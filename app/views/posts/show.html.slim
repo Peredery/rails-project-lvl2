@@ -1,7 +1,7 @@
 article.col-12.text-break
   h1 = @post.title
   small
-    = t('.categories')
+    => t('.category')
     = @post.category.name
 
   p = @post.created_at

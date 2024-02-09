@@ -15,7 +15,8 @@ en:
     comments:
         title: "Comments"
         reply: "Reply"
-        login_notice: "You need to sign in or sign up before continuing."
+        form:
+          login_notice: "You need to sign in or sign up before comment."
         create:
             success: "Comment was successfully created."
             failure: "Comment was not created."

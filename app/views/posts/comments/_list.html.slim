@@ -11,14 +11,15 @@
                   = t('deleted')
               - else
                 p.card-text = comment.content
-              p.card-text
+              .d-flex.align-items-center.justify-content-between
                 small.text-muted
                   = time_ago_in_words(comment.created_at)
-              - if owner?(comment)
-                = link_to t('edit'), edit_post_comment_path(@post, comment), class: 'btn btn-primary mb-2'
-                = button_to t('delete'), post_comment_path(@post, comment),
-                  method: :delete, data: { turbo_confirm: t('confirm_prompt') },
-                  class: 'btn btn-danger mb-2'
+                - if owner?(comment)
+                  .d-inline-block
+                    = link_to edit_post_comment_path(@post, comment), class: 'btn btn-primary btn-sm mb-2' do
+                      i.bi.bi-pencil-fill
+                    = button_to post_comment_path(@post, comment), method: :delete, data: { turbo_confirm: t('confirm_prompt') }, class: 'btn btn-danger btn-sm mb-2' do
+                      i.bi.bi-trash-fill
             .col-12
               = render 'posts/comments/form', comment: @post.comments.build, url: post_comments_path(@post), parent_id: comment.id
             .col-12

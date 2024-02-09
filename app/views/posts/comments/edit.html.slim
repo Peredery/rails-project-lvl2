@@ -1,1 +1,2 @@
 == render 'posts/comments/form', comment: @comment, url: post_comment_path(@comment.post, @comment)
+= link_to t('back'), url_for(:back), class: 'btn btn-secondary mb-2'

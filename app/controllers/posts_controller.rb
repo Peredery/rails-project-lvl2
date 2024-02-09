@@ -2,6 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update destroy]
+  before_action :post, only: %i[edit update destroy]
 
   def show
     @post = Post.find(params[:id])
@@ -11,9 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def edit
-    @post = current_user.posts.find(params[:id])
-  end
+  def edit; end
 
   def create
     @post = current_user.posts.build(post_params)
@@ -25,10 +24,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
-
-    not_found unless @post
-
     if @post.update(post_params)
       redirect_to @post, notice: t('.success')
     else
@@ -37,7 +32,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])
     if @post.destroy
       redirect_to root_path, notice: t('.success')
     else
@@ -47,5 +41,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :category_id)
+  end
+
+  def post
+    @post ||= current_user.posts.find(params[:id])
   end
 end
