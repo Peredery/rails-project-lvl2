@@ -14,7 +14,7 @@
               .d-flex.align-items-center.justify-content-between
                 small.text-muted
                   = time_ago_in_words(comment.created_at)
-                - if owner?(comment)
+                - if owner?(comment) && !comment.deleted?
                   .d-inline-block
                     = link_to edit_post_comment_path(@post, comment), class: 'btn btn-primary btn-sm mb-2' do
                       i.bi.bi-pencil-fill

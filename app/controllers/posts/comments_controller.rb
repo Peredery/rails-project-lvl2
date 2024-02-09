@@ -2,6 +2,7 @@
 
 class Posts::CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :comment, only: %i[edit update destroy]
 
   def edit
     @comment = current_user.comments.find(params[:id])
@@ -20,8 +21,6 @@ class Posts::CommentsController < ApplicationController
   end
 
   def update
-    @comment = current_user.comments.find(params[:id])
-
     if @comment.update(comment_params)
       redirect_to @comment.post, notice: t('.success')
     else
@@ -30,8 +29,6 @@ class Posts::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = current_user.comments.find(params[:id])
-
     if @comment.soft_delete!(current_user.id)
       redirect_to @comment.post, notice: t('.success')
     else
@@ -40,6 +37,10 @@ class Posts::CommentsController < ApplicationController
   end
 
   private
+
+  def comment
+    @comment ||= current_user.comments.find(params[:id], deleted: false)
+  end
 
   def comment_params
     params.require(:post_comment).permit(:content, :parent_id)
