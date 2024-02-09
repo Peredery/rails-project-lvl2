@@ -39,7 +39,7 @@ class Posts::CommentsController < ApplicationController
   private
 
   def comment
-    @comment ||= current_user.comments.find(params[:id], deleted: false)
+    @comment ||= current_user.comments.find_by(params[:id], deleted: false)
   end
 
   def comment_params
