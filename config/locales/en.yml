@@ -40,9 +40,8 @@ en:
   sign_in: "Sign In"
   log_out: "Log Out"
   sign_up: "Sign Up"
-  contact_us: "Contact Us"
   read_more: "Read More"
   deleted: "This content has been deleted."
 
   advert:
-    promote: 'You can promote your post by clicking the button below.'
+    promote: 'You can promote your post here by contacting administrator'

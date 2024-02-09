@@ -1,6 +1,9 @@
 en:
   posts:
     title: "Posts"
+    no_posts: "No posts found"
+    index:
+      title: "Posts"
     new:
       title: "New Post"
     create:
