@@ -10,31 +10,40 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
 
     sign_in @user
   end
+
   test 'update' do
-    patch post_comment_path(@post, @comment), params: {
-      post_comment: {
-        content: Faker::Lorem.sentence
-      }
+    attrs = {
+      content: Faker::Lorem.sentence
     }
 
+    patch post_comment_path(@post, @comment), params: {
+      post_comment: attrs
+    }
+
+    assert { @comment.reload.content == attrs[:content] }
     assert_redirected_to post_path(@post)
   end
 
-  def test_reply
+  test 'reply' do
+    attrs = {
+      content: Faker::Lorem.sentence,
+      parent_id: @comment.id
+    }
+
     assert_difference -> { PostComment.count } do
       post post_comments_path(@post), params: {
-        post_comment: {
-          content: Faker::Lorem.sentence,
-          parent_id: @comment.id
-        }
+        post_comment: attrs
       }
     end
 
+    assert { PostComment.find_by(content: attrs[:content]) }
     assert_redirected_to post_path(@post)
   end
 
-  def test_delete
+  test 'delete' do
     delete post_comment_path(@post, @comment)
+
+    assert { PostComment.find(@comment.id).deleted? }
     assert_redirected_to post_path(@post)
   end
 end

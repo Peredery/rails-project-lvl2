@@ -28,6 +28,7 @@
 #       enabled: "ON"
 
 en:
+  title: "Collective Blog"
   back: "Back"
   edit: "Edit"
   delete: "Delete"
@@ -42,6 +43,8 @@ en:
   sign_up: "Sign Up"
   read_more: "Read More"
   deleted: "This content has been deleted."
+  home: "Home"
+  likes: "Likes"
 
   advert:
     promote: 'You can promote your post here by contacting administrator'

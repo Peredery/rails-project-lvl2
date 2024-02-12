@@ -11,14 +11,16 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'create' do
-    post post_likes_url(@post), as: :html
+    sign_in users(:two)
 
-    assert_redirected_to @post
+    post post_likes_url(@post), as: :turbo_stream
+
+    assert { @post.likes.exists?(user: users(:two)) }
   end
 
   test 'destroy' do
-    assert_difference -> { PostLike.count }, -1 do
-      delete post_like_url(@post, @post.likes.first), as: :turbo_stream, xhr: true
-    end
+    delete post_like_url(@post, @post.likes.first), as: :turbo_stream
+
+    assert { @post.likes.exists?(user: @user) == false }
   end
 end

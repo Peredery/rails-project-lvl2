@@ -10,6 +10,9 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+    comments:
+      hints:
+        content: 'Minimum text size should be 1 and maximum 400'
     posts:
       hints:
         title: 'Minimum text size should be 5 and maximum 255'

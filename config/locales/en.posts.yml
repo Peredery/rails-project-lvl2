@@ -1,5 +1,7 @@
 en:
   posts:
+    category: "Category"
+    creator: "Creator"
     title: "Posts"
     no_posts: "No posts found"
     index:
@@ -24,6 +26,7 @@ en:
         create:
             success: "Comment was successfully created."
             failure: "Comment was not created."
+            empty: "Comment can't be empty."
         update:
             success: "Comment was successfully updated."
             failure: "Comment was not updated."

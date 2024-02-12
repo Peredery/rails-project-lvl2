@@ -12,33 +12,42 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'show' do
     get post_path(@post)
+
     assert_response :success
   end
 
   test 'new' do
     get new_post_path
+
     assert_response :success
   end
 
   test 'create' do
-    post posts_path, params: {
-      post: {
-        title: Faker::Lorem.sentence,
-        body: Faker::Lorem.characters(number: 200),
-        category_id: categories(:one).id
-      }
+    attrs = {
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.characters(number: 200),
+      category_id: categories(:one).id
     }
+
+    post posts_path, params: {
+      post: attrs
+    }
+
+    assert { Post.exists?(attrs) }
     assert_redirected_to post_path(Post.last)
   end
 
   test 'update' do
-    patch post_path(@post), params: {
-      post: {
-        title: Faker::Lorem.sentence,
-        body: Faker::Lorem.characters(number: 200)
-      }
+    attrs = {
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.characters(number: 200)
     }
 
+    patch post_path(@post), params: {
+      post: attrs
+    }
+
+    assert { Post.find_by(attrs) }
     assert_redirected_to post_path(posts(:one))
   end
 
@@ -58,6 +67,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_changes -> { Post.count }, -1 do
       delete post_path(posts(:one))
     end
+
+    assert { Post.exists?(posts(:one).id) == false }
     assert_redirected_to root_path
   end
 end

@@ -3,7 +3,7 @@
     - if defined?(parent_id)
       = f.hidden_field :parent_id, value: parent_id
     = f.error_notification
-    = f.input :content, label: false
+    = f.input :content, as: :text, hint: t('simple_form.comments.hints.content')
     = f.submit class: 'btn btn-primary mb-4'
 - else
   = link_to t('.login_notice'), new_user_session_path

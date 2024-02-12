@@ -21,6 +21,6 @@
 #  user_id  (user_id => users.id)
 #
 class PostLike < ApplicationRecord
-  belongs_to :post, inverse_of: :likes
+  belongs_to :post, inverse_of: :likes, counter_cache: :likes_count
   belongs_to :user, inverse_of: :likes
 end

@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  body        :text
+#  likes_count :integer
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -22,7 +23,7 @@
 #
 
 one:
-  title: MyString
-  body: MyText
+  title: Faker::Lorem.sentence
+  body: Faker::Lorem.paragraph
   creator: one
   category: one

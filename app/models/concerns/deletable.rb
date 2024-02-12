@@ -14,4 +14,8 @@ module Deletable
   def deleted?
     deleted_entity.present?
   end
+
+  def deleted
+    deleted_entity.present?
+  end
 end

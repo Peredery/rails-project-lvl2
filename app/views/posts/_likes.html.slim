@@ -1,17 +1,16 @@
-= turbo_frame_tag "like_button-post-id#{post.id}" do
+= turbo_frame_tag "like_button_post_id#{post.id}" do
   .d-flex.align-items-center
     span.me-2
-      |> Likes:
-      = post.likes.count
-    - if user_signed_in? && current_user.likes.exists?(post:)
-      = link_to post_like_path(post, current_user.likes.find_by(post:)),
-              data: { turbo_frame: "like_button-post-id#{post.id}", turbo_method: :delete },
-              class: 'text-danger',
-              title: 'Unlike' do
+      => t('likes')
+      = post.likes_count
+    - if user_like
+      = link_to post_like_path(post, user_like),
+              data: { turbo_frame: "like_button_post_id#{post.id}", turbo_method: :delete },
+              class: 'text-danger' do
         i class='bi bi-heart-fill'
     - elsif user_signed_in?
-      = link_to post_likes_path(post), data: { turbo_frame: "like_button-post-id#{post.id}", turbo_method: :post }, class: 'text-secondary', title: 'Like' do
+      = link_to post_likes_path(post), data: { turbo_frame: "like_button_post_id#{post.id}", turbo_method: :post }, class: 'text-secondary' do
         i class='bi bi-heart'
     - else
-      = link_to new_user_session_path, class: 'text-secondary', data: { turbo: false }, title: 'Like' do
+      = link_to new_user_session_path, class: 'text-secondary', data: { turbo: false } do
         i class='bi bi-heart'
