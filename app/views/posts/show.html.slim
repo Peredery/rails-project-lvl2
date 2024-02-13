@@ -3,6 +3,10 @@ article.col-12.text-break
   small
     => t('posts.category')
     = @post.category.name
+  br
+  small
+    => t('creator')
+    = @post.creator.email
 
   p = @post.created_at
   = render 'posts/likes', post: @post, user_like: @user_like
