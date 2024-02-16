@@ -15,12 +15,12 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
 
     post post_likes_url(@post), as: :turbo_stream
 
-    assert { @post.likes.exists?(user: users(:two)) }
+    assert { @post.likes.find_by(user: users(:two)) }
   end
 
   test 'destroy' do
     delete post_like_url(@post, @post.likes.first), as: :turbo_stream
 
-    assert { @post.likes.exists?(user: @user) == false }
+    assert { @post.likes.find_by(user: @user).nil? }
   end
 end

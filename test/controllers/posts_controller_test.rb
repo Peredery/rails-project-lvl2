@@ -74,7 +74,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       delete post_path(posts(:one))
     end
 
-    assert { Post.exists?(posts(:one).id) == false }
+    assert { Post.find_by(id: @post.id).nil? }
     assert_redirected_to root_path
   end
 end
