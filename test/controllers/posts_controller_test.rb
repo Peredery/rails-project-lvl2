@@ -54,7 +54,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert { Post.find_by(attrs) }
-    assert_redirected_to post_path(posts(:one))
+    assert_redirected_to post_path(@post)
   end
 
   test 'update_wrong_user' do
@@ -71,7 +71,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'destroy' do
     assert_changes -> { Post.count }, -1 do
-      delete post_path(posts(:one))
+      delete post_path(@post)
     end
 
     assert { Post.find_by(id: @post.id).nil? }
