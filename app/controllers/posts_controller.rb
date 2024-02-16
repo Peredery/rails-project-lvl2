@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = set_post
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = set_post
+    @post = current_user.posts.find(params[:id])
 
     if @post.update(post_params)
       redirect_to @post, notice: t('.success')
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = set_post
+    @post = current_user.posts.find(params[:id])
 
     if @post.destroy
       redirect_to root_path, notice: t('.success')
@@ -56,9 +56,5 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :category_id)
-  end
-
-  def set_post
-    @set_post ||= current_user.posts.find(params[:id])
   end
 end
