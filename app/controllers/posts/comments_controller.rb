@@ -34,7 +34,7 @@ class Posts::CommentsController < ApplicationController
     if @comment.soft_delete!(current_user.id)
       redirect_to @comment.post, notice: t('.success')
     else
-      redirect_to @comment.post, notice: t('.failure'), status: :unprocessable_entity
+      redirect_to @comment.post, notice: t('.failure')
     end
   end
 

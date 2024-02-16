@@ -48,7 +48,7 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to root_path, notice: t('.success')
     else
-      redirect_to root_path, notice: t('.failure'), status: :unprocessable_entity
+      redirect_to root_path, notice: t('.failure')
     end
   end
 
