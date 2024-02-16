@@ -4,14 +4,15 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
-    @posts = Post.includes(:creator).order(created_at: :desc)
+    @category = Category.find_by(name: params[:category_name])
+    @posts = @category ? Post.includes(:creator).order(created_at: :desc).where(category: @category.presence) : Post.includes(:creator).order(created_at: :desc)
     @user_likes = @user_likes = current_user ? current_user.likes.index_by(&:post_id) : {}
   end
 
   def show
     @post = Post.includes(comments: :user).find(params[:id])
     @empty_comment = @post.comments.build
-    @comments = @post.comments.includes(:user).arrange(order: :created_at)
+    @comments = @post.comments.arrange(order: :created_at)
     @user_like = current_user.likes.find_by(post: @post) if current_user
   end
 

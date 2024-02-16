@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: 'posts#index'
 
-  resources :categories, only: %i[show], param: :name
-
   resources :posts do
+    get ':category_name', to: 'posts#index', on: :collection
     scope module: :posts do
       resources :likes, only: %i[create destroy]
       resources :comments, only: %i[create update edit destroy]
