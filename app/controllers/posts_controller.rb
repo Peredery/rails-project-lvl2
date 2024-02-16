@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:creator).order(created_at: :desc)
-    @user_likes = @user_likes = current_user ? current_user.likes.index_by { |like| like.post_id } : {}
+    @user_likes = @user_likes = current_user ? current_user.likes.index_by(&:post_id) : {}
   end
 
   def show

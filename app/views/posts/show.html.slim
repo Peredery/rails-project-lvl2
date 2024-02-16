@@ -23,5 +23,5 @@ article.col-12.text-break
           class: 'btn btn-danger mb-2'
 
   h2 Comments
-  = render 'posts/comments/form', comment: @empty_comment, url: post_comments_path(@post)
+  / = render 'posts/comments/form', comment: @empty_comment, url: post_comments_path(@post), post: @post
   = render 'posts/comments/list', empty_comment: @empty_comment, comments: @comments, post: @post
