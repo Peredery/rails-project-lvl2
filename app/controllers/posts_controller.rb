@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:comments, :creator).find(params[:id])
+    @post = Post.includes(comments: :user).find(params[:id])
     @empty_comment = @post.comments.build
     @comments = @post.comments.includes(:user).arrange(order: :created_at)
     @user_like = current_user.likes.find_by(post: @post) if current_user
