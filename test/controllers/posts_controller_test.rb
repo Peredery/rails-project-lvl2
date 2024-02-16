@@ -17,10 +17,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'index with category' do
-    get post_path(@post, category_name: categories(:one).name)
+    get category_posts_path(category_name: categories(:one).name)
 
-    assert { response.body.include?(posts(:one).body) }
     assert_response :success
+    assert { response.body.include?(posts(:one).body) }
   end
 
   test 'show' do
