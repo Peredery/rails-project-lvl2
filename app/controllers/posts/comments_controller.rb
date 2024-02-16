@@ -20,7 +20,7 @@ class Posts::CommentsController < ApplicationController
   end
 
   def update
-    @comment = PostComment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
 
     if @comment.update(comment_params)
       redirect_to @comment.post, notice: t('.success')
@@ -30,7 +30,7 @@ class Posts::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = PostComment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     if @comment.soft_delete!(current_user.id)
       redirect_to @comment.post, notice: t('.success')
     else
