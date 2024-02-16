@@ -10,6 +10,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
+  def index
+    get post_path(@post)
+
+    assert_response :success
+  end
+
   test 'show' do
     get post_path(@post)
 
