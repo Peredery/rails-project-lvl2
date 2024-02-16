@@ -40,6 +40,12 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(@post)
   end
 
+  test 'edit' do
+    get edit_post_comment_path(@post, @comment)
+
+    assert_response :success
+  end
+
   test 'delete' do
     delete post_comment_path(@post, @comment)
 
