@@ -57,6 +57,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(@post)
   end
 
+  test 'edit' do
+    get edit_post_path(@post)
+
+    assert_response :success
+  end
+
   test 'update_wrong_user' do
     sign_in users(:two)
     patch post_path(@post), params: {
