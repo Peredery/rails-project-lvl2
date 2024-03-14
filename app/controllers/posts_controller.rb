@@ -5,7 +5,9 @@ class PostsController < ApplicationController
 
   def index
     @category = Category.find_by(name: params[:category_name])
-    @posts = @category ? Post.includes(:creator).order(created_at: :desc).where(category: @category.presence) : Post.includes(:creator).order(created_at: :desc)
+    @posts = Post.includes(:creator).order(created_at: :desc)
+    @posts = @posts.where(category: @category) if @category.present?
+
     @user_likes = @user_likes = current_user ? current_user.likes.index_by(&:post_id) : {}
   end
 
