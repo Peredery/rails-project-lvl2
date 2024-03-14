@@ -10,7 +10,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test 'index' do
+  test 'show' do
     get post_path(@post)
 
     assert_response :success
@@ -20,7 +20,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     get category_posts_path(category_name: categories(:one).name)
 
     assert_response :success
-    assert { response.body.include?(posts(:one).body) }
+    assert { response.body.include?(@post.body) }
   end
 
   test 'show' do
