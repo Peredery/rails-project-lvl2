@@ -5,7 +5,7 @@ class Posts::CommentsController < ApplicationController
 
   def edit
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 
   def create
