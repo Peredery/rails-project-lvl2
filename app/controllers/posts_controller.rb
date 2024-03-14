@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @posts = Post.includes(:creator).order(created_at: :desc)
     @posts = @posts.where(category: @category) if @category.present?
 
-    @user_likes = @user_likes = current_user ? current_user.likes.index_by(&:post_id) : {}
+    @user_likes = current_user ? current_user.likes.index_by(&:post_id) : {}
   end
 
   def show
